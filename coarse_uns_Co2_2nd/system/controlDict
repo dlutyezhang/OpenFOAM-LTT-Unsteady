@@ -1,0 +1,78 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     pimpleFoam;
+
+startFrom       latestTime;
+
+startTime       6000;
+
+stopAt          endTime;
+
+endTime         6000.1;
+
+deltaT          1e-5;
+
+writeControl    adjustableRunTime;
+
+writeInterval   0.01;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  12;
+
+writeCompression uncompressed;
+
+timeFormat      general;
+
+timePrecision   12;
+
+runTimeModifiable true;
+
+adjustTimeStep  yes;
+
+maxCo           2;
+
+/*functions //To extract the coefficients during the simulation
+{
+
+    forceCoeffs
+    {
+	type forceCoeffs;
+	functionObjectLibs ("libforces.so");
+	patches (airfoil);
+	log true
+	pName p;          //pressure
+	Uname U;          //velocity
+	rhoName rhoInf;   //reference density name
+	rhoInf 1.225;      //reference density value
+	magUInf 14.604;   //reference velocity
+	CofR (0.25 0 0);   //Centre of rotation, Caculate Cm,还有这个？
+	liftDir (-0.1087 0.9941 0);   //Direction of the lift coefficient
+	dragDir (0.9941 0.1087 0);   //Direction of the drag coefficient
+	pitchAxis (0 0 -1); //Pitching moment axis
+	lRef 1;             //reference length (chord is 1 m),还有这个？
+	Aref 0.005;             //reference are (put here the mesh size in the z-direction),这个做什么用的？
+	
+	outputControl   timeStep;
+	outputInterval 1;
+    }
+}*/
+
+
+// ************************************************************************* //
