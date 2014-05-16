@@ -34,7 +34,7 @@ divSchemes
     div(phi,U)      Gauss linearUpwind grad(U);
     div(phi,k)      Gauss linearUpwind grad(k);//Gauss upwind; 
     div(phi,omega)  Gauss linearUpwind grad(omega);//Gauss upwind; 
-    div((nuEff*dev(T(grad(U))))) Gauss linear; //try
+    div((nuEff*dev(T(grad(U))))) Gauss linear; //
 }
 
 laplacianSchemes
